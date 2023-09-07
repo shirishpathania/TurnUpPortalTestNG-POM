@@ -1,7 +1,7 @@
 package Pages;
 
 import Utilities.WaitHelpers;
-import dev.failsafe.internal.util.Assert;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,10 +68,10 @@ public class TM_Page {
         WebElement newDescription = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
         WebElement newPrice = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
 
-        Assert.isTrue(newCode.getText().contains(code), "Material record hasn't been created");
-        Assert.isTrue(newTypeCode.getText().contains(typeCode), "Material record hasn't been created");
-        Assert.isTrue(newDescription.getText().contains(description), "Material record hasn't been created");
-        Assert.isTrue(newPrice.getText().contains(price), "Material record hasn't been created");
+        Assert.assertEquals(newCode.getText(),code, "Material record hasn't been created");
+        Assert.assertEquals(newTypeCode.getText(),typeCode, "Material record hasn't been created");
+        Assert.assertEquals(newDescription.getText(),description, "Material record hasn't been created");
+        Assert.assertEquals(newPrice.getText(),price, "Material record hasn't been created");
     }
 
     public void EditTimeRecord(WebDriver driver, String code, String typeCode, String description, String price) {
@@ -147,9 +147,9 @@ public class TM_Page {
         WebElement updatedDescription = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
         WebElement updatedPrice = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
 
-        Assert.isTrue(updatedTypeCode.getText().contains(typeCode), "Material record hasn't been created");
-        Assert.isTrue(updatedDescription.getText().contains(description), "Material record hasn't been created");
-        Assert.isTrue(updatedPrice.getText().contains(price), "Material record hasn't been created");
+        dev.failsafe.internal.util.Assert.isTrue(updatedTypeCode.getText().contains(typeCode), "Material record hasn't been created");
+        dev.failsafe.internal.util.Assert.isTrue(updatedDescription.getText().contains(description), "Material record hasn't been created");
+        dev.failsafe.internal.util.Assert.isTrue(updatedPrice.getText().contains(price), "Material record hasn't been created");
     }
 
     public void DeleteTimeRecord(WebDriver driver) {
@@ -192,9 +192,9 @@ public class TM_Page {
         WebElement updatedDescription = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
         WebElement updatedPrice = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
 
-        Assert.isTrue(updatedTypeCode.getText() != typeCode, "Material record hasn't been deleted");
-        Assert.isTrue(updatedDescription.getText() != description, "Material record hasn't been deleted");
-        Assert.isTrue(updatedPrice.getText() != price, "Material record hasn't been deleted");
+        Assert.assertNotEquals(updatedTypeCode.getText(), typeCode, "Material record hasn't been deleted");
+        Assert.assertNotEquals(updatedDescription.getText(), description, "Material record hasn't been deleted");
+        Assert.assertNotEquals(updatedPrice.getText(), price, "Material record hasn't been deleted");
 
     }
 }

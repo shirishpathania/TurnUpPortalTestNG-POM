@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class WaitHelpers {
@@ -30,15 +29,15 @@ public class WaitHelpers {
         var wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 
         if (locator == "xpath") {
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locatorValue)));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locatorValue)));
         }
 
         if (locator == "Id") {
-            wait.until(ExpectedConditions.elementToBeClickable(By.id(locatorValue)));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(locatorValue)));
         }
 
         if (locator == "CssSelector") {
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(locatorValue)));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locatorValue)));
         }
     }
 }

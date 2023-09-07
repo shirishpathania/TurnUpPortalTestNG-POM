@@ -5,6 +5,7 @@ package Tests;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.TM_Page;
+//import Utilities.CommonDriver;
 import Utilities.CommonDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -38,7 +39,7 @@ public class TM_Tests extends CommonDriver
             // TM page object initialization and definition
             
             tmPageObj.CreateTimeRecord(driver, "Keyboard", "M","Unknown Material","500");
-            tmPageObj.CreateTMAssertion(driver, "Keyboard", "M","Unknown Material","500");
+            tmPageObj.CreateTMAssertion(driver, "Keyboard", "M","Unknown Material","$500.00");
         }
 
         @Test(priority = 1, description = "This test checks if a user is able to edit an existing time record")

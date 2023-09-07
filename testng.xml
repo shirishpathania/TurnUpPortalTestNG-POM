@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TurnUp Portal">
+    <test name="Test Create, Edit, and Delete TM record">
+        <classes>
+            <class name="Tests.TM_Tests"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
