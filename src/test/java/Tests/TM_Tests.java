@@ -7,6 +7,7 @@ import Pages.LoginPage;
 import Pages.TM_Page;
 //import Utilities.CommonDriver;
 import Utilities.CommonDriver;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -14,18 +15,18 @@ import org.testng.annotations.Test;
 
 public class TM_Tests extends CommonDriver
     {
+
+        WebDriver driver = new ChromeDriver();
         LoginPage loginPageObj = new LoginPage();
         HomePage homePageObj = new HomePage();
-        TM_Page tmPageObj = new TM_Page();
+        TM_Page tmPageObj = new TM_Page(driver);
 
         @BeforeTest
         public void TM_SetUp() throws InterruptedException {
-            // open chrome browser
-            driver = new ChromeDriver();
             Thread.sleep(1000);
 
             // Login page object initialization and definition
-            
+
             loginPageObj.LoginSteps(driver);
 
             // Home page object intialization and definition

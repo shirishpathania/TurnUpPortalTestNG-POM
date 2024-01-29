@@ -1,6 +1,9 @@
 package Pages;
 
-import Utilities.WaitHelpers;
+import Utilities.Wait;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,19 +11,30 @@ import org.openqa.selenium.WebElement;
 
 public class TM_Page {
 
+    WebDriver driver;
+    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Create New')]")
+    WebElement _createButton;
+
+    public TM_Page(WebDriver driver) {
+
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
     public void CreateTimeRecord(WebDriver driver, String code, String typeCode, String description, String price) {
 
         // Click on create new button
-        WebElement createButton = driver.findElement(By.xpath("//*[@id='container']/p/a"));
-        createButton.click();
+//        WebElement createButton = driver.findElement(By.xpath("//*[@id='container']/p/a"));
+//        createButton.click();
+        _createButton.click();
 
-        WaitHelpers.WaitToBeClickable(driver, "xpath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]", 2);
+        Wait.WaitToBeClickable(driver, "xpath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]", 2);
 
         // Select Material from type code dropdown
         WebElement typeCodeDropdown = driver.findElement(By.xpath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]"));
         typeCodeDropdown.click();
 
-        WaitHelpers.WaitToBeClickable(driver, "xpath", "//*[@id='TypeCode_listbox']/li[1]", 2);
+        Wait.WaitToBeClickable(driver, "xpath", "//*[@id='TypeCode_listbox']/li[1]", 2);
 
         WebElement materialOption = driver.findElement(By.xpath("//*[@id='TypeCode_listbox']/li[1]"));
         materialOption.click();
@@ -55,14 +69,14 @@ public class TM_Page {
             throw new RuntimeException(e);
         }
         // Wait till the last page button is clickable
-        WaitHelpers.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]/span", 20);
+        Wait.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]/span", 20);
 
         // Click on go to last page button
         WebElement goToLastPageButton = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
         goToLastPageButton.click();
 
         // Check if material record has been created
-        WaitHelpers.WaitToBeVisible(driver, "xpath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]", 20);
+        Wait.WaitToBeVisible(driver, "xpath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]", 20);
         WebElement newCode = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
         WebElement newTypeCode = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
         WebElement newDescription = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
@@ -82,13 +96,13 @@ public class TM_Page {
             throw new RuntimeException(e);
         }
         // Wait till the last page button is clickable
-        WaitHelpers.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]", 5);
+        Wait.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]", 5);
 
         // Click on go to last page button
         WebElement goToLastPageButton = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
         goToLastPageButton.click();
 
-        WaitHelpers.WaitToBeVisible(driver, "xpath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr/td[1]", 5);
+        Wait.WaitToBeVisible(driver, "xpath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr/td[1]", 5);
 
         WebElement findNewRecord = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
 
@@ -102,7 +116,7 @@ public class TM_Page {
             System.out.println("Record to be edited not found.");
         }
 
-        WaitHelpers.WaitToBeClickable(driver, "xpath", "//*[@id='Code']", 5);
+        Wait.WaitToBeClickable(driver, "xpath", "//*[@id='Code']", 5);
         // update code text box value
         WebElement codeTextbox = driver.findElement(By.xpath("//*[@id='Code']"));
         codeTextbox.clear();
@@ -136,7 +150,7 @@ public class TM_Page {
             throw new RuntimeException(e);
         }
         // Wait till the last page button is clickable
-        WaitHelpers.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]", 5);
+        Wait.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]", 5);
 
         // Click on go to last page button
         WebElement goToLastPageButton = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
@@ -160,14 +174,14 @@ public class TM_Page {
             throw new RuntimeException(e);
         }
         // Wait till the last page button is clickable
-        WaitHelpers.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]", 5);
+        Wait.WaitToBeClickable(driver, "xpath", "//*[@id='tmsGrid']/div[4]/a[4]", 5);
 
         // Click on go to last page button
         WebElement goToLastPageButton = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[4]/a[4]"));
         goToLastPageButton.click();
 
         // Wait till the delete button is visible
-        WaitHelpers.WaitToBeVisible(driver, "xpath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]", 5);
+        Wait.WaitToBeVisible(driver, "xpath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]", 5);
 
         // Check if material record can be deleted
         WebElement Delete = driver.findElement(By.xpath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));

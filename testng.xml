@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TurnUp Portal">
-    <test name="Test Create, Edit, and Delete TM record">
+<suite name="All Test Suite" parallel="methods">
+    <test verbose="2" preserve-order="true" name="C:/Users/Lenovo/IdeaProjects/TurnUpPortalTestNG" thread-count="3">
         <classes>
-            <class name="Tests.TM_Tests"/>
+            <class name="Tests.Employees_Tests">
+                <methods>
+                    <include name="DeleteEmployeeTest"/>
+                    <exclude name="CreateEmployeeTest"/>
+                    <include name="EditEmployeeTest"/>
+                </methods>
+            </class>
+            <class name="Tests.TM_Tests">
+                <methods>
+                    <include name="CreateTime_Test"/>
+                    <include name="EditTime_Test"/>
+                    <include name="DeleteTime_Test"/>
+                </methods>
+            </class>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>
