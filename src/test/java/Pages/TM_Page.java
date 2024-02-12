@@ -12,8 +12,31 @@ import org.openqa.selenium.WebElement;
 public class TM_Page {
 
     WebDriver driver;
+
+    // Page Factory
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Create New')]")
     WebElement _createButton;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]")
+    WebElement _typeCodeDropdown;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='TypeCode_listbox']/li[1]")
+    WebElement _materialOption;
+
+    @FindBy(how = How.ID, using = "Code")
+    WebElement _codeTextBox;
+
+    @FindBy(how = How.ID, using = "Description")
+    WebElement _descriptionTextBox;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]")
+    WebElement _priceInputTag;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='Price']")
+    WebElement _pricePerUnit;
+
+    @FindBy(how = How.ID, using = "SaveButton")
+    WebElement _saveButton;
 
     public TM_Page(WebDriver driver) {
 
@@ -31,33 +54,41 @@ public class TM_Page {
         Wait.WaitToBeClickable(driver, "xpath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]", 2);
 
         // Select Material from type code dropdown
-        WebElement typeCodeDropdown = driver.findElement(By.xpath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]"));
-        typeCodeDropdown.click();
+//        WebElement typeCodeDropdown = driver.findElement(By.xpath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]"));
+//        typeCodeDropdown.click();
+        _typeCodeDropdown.click();
 
         Wait.WaitToBeClickable(driver, "xpath", "//*[@id='TypeCode_listbox']/li[1]", 2);
 
-        WebElement materialOption = driver.findElement(By.xpath("//*[@id='TypeCode_listbox']/li[1]"));
-        materialOption.click();
+//        WebElement materialOption = driver.findElement(By.xpath("//*[@id='TypeCode_listbox']/li[1]"));
+//        materialOption.click();
+        _materialOption.click();
 
         // Identify code text box and enter a code
-        WebElement codeTextbox = driver.findElement(By.id("Code"));
-        codeTextbox.sendKeys(code);
+//        WebElement codeTextbox = driver.findElement(By.id("Code"));
+//        codeTextbox.sendKeys(code);
+        _codeTextBox.sendKeys(code);
 
         // Identify description text box and enter a description
-        WebElement descriptionTextbox = driver.findElement(By.id("Description"));
-        descriptionTextbox.sendKeys(description);
+//        WebElement descriptionTextbox = driver.findElement(By.id("Description"));
+//        descriptionTextbox.sendKeys(description);
+        _descriptionTextBox.sendKeys(description);
 
         // Identify price per unit text box and enter a code
-        WebElement priceInputTag = driver.findElement(By.xpath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
-        priceInputTag.click();
+//        WebElement priceInputTag = driver.findElement(By.xpath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
+//        priceInputTag.click();
+        _priceInputTag.click();
 
-        WebElement pricePerUnit = driver.findElement(By.xpath("//*[@id='Price']"));
-        pricePerUnit.clear();
-        pricePerUnit.sendKeys(price);
+//        WebElement pricePerUnit = driver.findElement(By.xpath("//*[@id='Price']"));
+//        pricePerUnit.clear();
+//        pricePerUnit.sendKeys(price);
+        _pricePerUnit.clear();
+        _pricePerUnit.sendKeys(price);
 
         // Click on save button
-        WebElement saveButton = driver.findElement(By.id("SaveButton"));
-        saveButton.click();
+//        WebElement saveButton = driver.findElement(By.id("SaveButton"));
+//        saveButton.click();
+        _saveButton.click();
 
     }
 

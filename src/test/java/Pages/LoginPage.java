@@ -14,6 +14,11 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginPage {
 
+    // Page Object Model
+    By username = By.id("UserName");
+    By password = By.id("Password");
+    By loginButton = By.xpath("//*[@id='loginForm']/form/div[3]/input[1]");
+
     public void LoginSteps(WebDriver driver) {
 
         // Implicit Wait
@@ -29,17 +34,20 @@ public class LoginPage {
 
         try {
             // identify username textbox and enter valid username
-            Wait.WaitToBeClickable(driver, "id", "UserNam", 10);
-            WebElement userName = driver.findElement(By.id("UserName"));
-            userName.sendKeys("hari");
+            Wait.WaitToBeClickable(driver, "id", "UserName", 10);
+//            WebElement userName = driver.findElement(By.id("UserName"));
+//            userName.sendKeys("hari");
+            driver.findElement(username).sendKeys("hari");
 
             // identify password textbox and enter valid password
-            WebElement password = driver.findElement(By.id("Password"));
-            password.sendKeys("123123");
+//            WebElement password = driver.findElement(By.id("Password"));
+//            password.sendKeys("123123");
+            driver.findElement(password).sendKeys("123123");
 
             // identify login button and click
-            WebElement login = driver.findElement(By.xpath("//*[@id='loginForm']/form/div[3]/input[1]"));
-            login.click();
+//            WebElement login = driver.findElement(By.xpath("//*[@id='loginForm']/form/div[3]/input[1]"));
+//            login.click();
+            driver.findElement(loginButton).click();
 
             //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Hello hari!')]")));
             Wait.WaitToBeVisible(driver, "xpath", "//a[contains(text(),'Hello hari!')]", 20);

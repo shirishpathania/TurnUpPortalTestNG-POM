@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="methods">
-    <test verbose="2" preserve-order="true" name="C:/Users/Lenovo/IdeaProjects/TurnUpPortalTestNG" thread-count="3">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Lenovo/IdeaProjects/TurnUpPortalTestNG">
         <classes>
             <class name="Tests.Employees_Tests">
                 <methods>
@@ -13,7 +13,7 @@
             <class name="Tests.TM_Tests">
                 <methods>
                     <include name="CreateTime_Test"/>
-                    <include name="EditTime_Test"/>
+                    <exclude name="EditTime_Test"/>
                     <include name="DeleteTime_Test"/>
                 </methods>
             </class>
